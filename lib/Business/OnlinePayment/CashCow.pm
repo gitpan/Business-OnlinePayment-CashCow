@@ -1,6 +1,6 @@
 package Business::OnlinePayment::CashCow;
 
-# $Id: CashCow.pm,v 1.14 2005/08/09 09:30:30 jonasbn Exp $
+# $Id: CashCow.pm,v 1.17 2005/10/12 17:36:20 jonasbn Exp $
 
 use strict;
 use vars qw($VERSION @ISA);
@@ -8,12 +8,11 @@ use vars qw($VERSION @ISA);
 use Business::OnlinePayment;
 use Net::SSLeay qw(make_form post_https make_headers);
 use XML::Simple;
-use Carp qw(croak);
 use Data::Dumper;
 
 use constant DEBUG => 0;
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 @ISA = qw(Business::OnlinePayment);
 
 sub set_defaults {
@@ -48,21 +47,6 @@ sub get_fields {
 	}
  
  	return %new;
-}
-
-sub map_fields {
-    my($self) = @_;
-
-	#We use accessor in case internal format changes
-    my %content = $self->content();
-	
-	#setting transaction type
-    $content{'type'} = lc($content{'type'}) || $content{'type'};
-    
-    $self->transaction_type($content{'type'});
-
-    # stuff it back into %content
-    $self->content(%content);
 }
 
 sub remap_fields {
@@ -194,9 +178,10 @@ sub submit {
 	}
 
 	if (lc($content{'action'}) eq 'normal authorization') {
- 		$self->_normal_authorization(\@fields);
-	} else { 
-		croak ("unknown action: ".$content{'action'});
+		$self->_normal_authorization(\@fields);
+	} else {
+		$self->error_message("unsupported action: ".$content{'action'});
+		return 0;
 	}
 
 	return 1;
@@ -242,23 +227,28 @@ sub _process_response {
 	my ($self, $page, $server_response, $reply_headers) = @_;
 
 	if (DEBUG) {
-    	print STDERR "Dumping \\\$server_response in _process_response\n";
-    	print STDERR Dumper \$server_response;
+		print STDERR "Dumping \\\$server_response in _process_response\n";
+		print STDERR Dumper \$server_response;
 
-    	print STDERR "Dumping \\\$reply_headers in _process_response\n";
-    	print STDERR Dumper \$reply_headers;
+		print STDERR "Dumping \\\$reply_headers in _process_response\n";
+		print STDERR Dumper \$reply_headers;
 
-    	print STDERR "Dumping \\\$page in _process_response\n";
-    	print STDERR Dumper \$page;
+		print STDERR "Dumping \\\$page in _process_response\n";
+		print STDERR Dumper \$page;
 	}
 
-	my $ref = XMLin($page); 
+	my $ref;
 
-    if ($ref->{errormessage}) {
-        $self->is_success(0);
-    } else {
-        $self->is_success(1);
-    }
+	eval {
+		$ref = XMLin($page);
+	};
+
+	if ($@) {
+		$self->error_message("Unable to handle result from CashCow gateway");
+		$self->is_success(0);
+	} else {
+		$self->is_success(1);
+	}
 
 	return 1;
 }
@@ -275,7 +265,7 @@ Business::OnlinePayment::CashCow - Online payment processing via CashCow
 
 =head1 VERSION
 
-This documentation describes version 0.01 of Business::OnlinePayment::CashCow
+This documentation describes version 0.02 of Business::OnlinePayment::CashCow
 
 =head1 SYNOPSIS
 
@@ -371,7 +361,12 @@ the string CashCow as parameter to the contructor.
 
 This method is required to be overloaded by L<Business::OnlinePayment>
 
-The method uses HTTPS via L<Net::SSLeay>. 
+The method uses HTTPS via L<Net::SSLeay>.
+
+Return 1 upon success and 0 upon failure. 
+
+Check B<is_success> for indication of transaction success and B<error_message>
+in case of transaction failure.
 
 =head3 set_defaults
 
@@ -385,13 +380,6 @@ This method is inherited from L<Business::OnlinePayment>
 
 It test the B<TestFlg> form field (SEE: 'Original Formfields', below and 'TODO'
 below).
-
-=head3 map_fields
-
-This method overloads the similar method in L<Business::OnlinePayment>
-
-This method was overloaded for development reasons only and will eventually
-be removed.
 
 =head3 remap_fields
 
