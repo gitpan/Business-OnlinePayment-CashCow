@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: Business-OnlinePayment-CashCow
-version: 0.03
+version: 0.04
 author:
   - |-
     Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
@@ -15,5 +15,5 @@ requires:
 provides:
   Business::OnlinePayment::CashCow:
     file: lib/Business/OnlinePayment/CashCow.pm
-    version: 0.03
+    version: 0.04
 generated_by: Module::Build version 0.2611
