@@ -1,11 +1,16 @@
---- #YAML:1.0
+---
 name: Business-OnlinePayment-CashCow
-version: 0.04
+version: !!perl/hash:Module::Build::Version
+  original: 0.05
+  version:
+    - 0
+    - 50
 author:
-  - |-
-    Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
+  - 'Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>'
 abstract: Online payment processing via CashCow
 license: artistic
+resources:
+  license: http://opensource.org/licenses/artistic-license.php
 requires:
   Business::OnlinePayment: 0.02
   Data::Dumper: 0
@@ -15,5 +20,8 @@ requires:
 provides:
   Business::OnlinePayment::CashCow:
     file: lib/Business/OnlinePayment/CashCow.pm
-    version: 0.04
-generated_by: Module::Build version 0.2611
+    version: 0.05
+generated_by: Module::Build version 0.2804
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
