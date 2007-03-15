@@ -1,6 +1,34 @@
 Changes file for Business-OnlinePayment-CashCow
 
-$Id: Changes,v 1.13 2006/09/04 20:36:53 jonasbn Exp $
+$Id: Changes,v 1.17 2007/03/15 19:47:20 jonasbn Exp $
+
+Release 0.07 - released Thu Mar 15 2007, update not necessary
+
+- Fixed a few obvious Perl::Critic violations and set severity in Perl::Critic
+  test to 5, gentle
+
+- Added Perl::Critic test t/critic.t
+
+- Added t/perlcriticrc (severity 1, brutal)
+
+- Added kwalitee test, t/kwalitee.t
+
+- Added POD test, t/pod.t
+
+- Added POD coverage test, t/pod-coverage.t
+
+- Updated MANIFEST
+
+
+RELEASE 0.06 (released Wed Sep  6 2006)
+
+- Fixed problem with handling of CashCow response, it's format for some reason
+  seem to have changed, this highlights one of the more serious problems of 
+  the interaction with CashCow and that is should be the other way around,
+  we should always decline unless we get an ok from CashCow.
+    
+  I will raise the issue with CashCow.
+
 
 RELEASE 0.05 (released Mon Sep  4 2006)
 
