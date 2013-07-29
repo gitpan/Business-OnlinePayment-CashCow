@@ -1,12 +1,24 @@
 ---
-name: Business-OnlinePayment-CashCow
-version: 0.09
+abstract: 'Online payment processing via CashCow'
 author:
-  - 'Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>'
-abstract: Online payment processing via CashCow
+  - 'Jonas B. Nielsen, (jonasbn) <jonasbn@cpan.org>'
+build_requires:
+  Test::Kwalitee: 0
+  Test::More: 0
+  Test::Perl::Critic: 0
+configure_requires:
+  Module::Build: 0.40
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4005, CPAN::Meta::Converter version 2.131560'
 license: artistic
-resources:
-  license: http://opensource.org/licenses/artistic-license.php
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Business-OnlinePayment-CashCow
+provides:
+  Business::OnlinePayment::CashCow:
+    file: lib/Business/OnlinePayment/CashCow.pm
+    version: 0.10
 requires:
   Business::OnlinePayment: 0.02
   Data::Dumper: 0
@@ -14,11 +26,9 @@ requires:
   Net::SSLeay: 0
   URI::Escape: 0
   XML::Simple: 0
-provides:
-  Business::OnlinePayment::CashCow:
-    file: lib/Business/OnlinePayment/CashCow.pm
-    version: 0.09
-generated_by: Module::Build version 0.2806
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.2.html
-  version: 1.2
+resources:
+  bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=Business-OnlinePayment-CashCow
+  homepage: http://logicLAB.jira.com/browse/BOPCC
+  license: http://www.perlfoundation.org/artistic_license_1_0
+  repository: http://logicLAB.jira.com/svn/BOPCC
+version: 0.10

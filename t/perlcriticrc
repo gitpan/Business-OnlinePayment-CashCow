@@ -1,5 +1,5 @@
 
-# $Id: perlcriticrc,v 1.1 2007/03/12 08:05:19 jonasbn Exp $
+# $Id: perlcriticrc,v 1.1 2007-03-12 08:05:19 jonasbn Exp $
 
 severity = 5
 

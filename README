@@ -1,6 +1,6 @@
 README file for Business-OnlinePayment-CashCow
 
-$Id: README,v 1.2 2005/08/09 09:35:44 jonasbn Exp $
+$Id: README,v 1.2 2005-08-09 09:35:44 jonasbn Exp $
 
 NAME
     Business::OnlinePayment::CashCow - Online payment processing via CashCow

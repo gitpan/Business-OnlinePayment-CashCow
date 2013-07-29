@@ -1,4 +1,4 @@
-# $Id: CashCow.t,v 1.3 2005/08/09 08:38:29 jonasbn Exp $
+# $Id: CashCow.t,v 1.3 2005-08-09 08:38:29 jonasbn Exp $
 
 use strict;
 use Test::More tests => 13;

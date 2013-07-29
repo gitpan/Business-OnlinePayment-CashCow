@@ -1,6 +1,6 @@
 TODO file for Business-OnlinePayment-CashCow
 
-$Id: TODO,v 1.5 2006/09/06 13:08:29 jonasbn Exp $
+$Id: TODO,v 1.5 2006-09-06 13:08:29 jonasbn Exp $
 
 * Look into problems with separation between ok and nok, see Changes entry
   for 0.06

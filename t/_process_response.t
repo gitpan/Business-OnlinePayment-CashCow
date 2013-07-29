@@ -1,4 +1,4 @@
-# $Id: _process_response.t,v 1.1 2005/10/12 16:02:48 jonasbn Exp $
+# $Id: _process_response.t,v 1.1 2005-10-12 16:02:48 jonasbn Exp $
 
 use strict;
 use Test::More tests => 7;

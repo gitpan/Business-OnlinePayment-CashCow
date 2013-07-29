@@ -1,4 +1,4 @@
-<!-- $Id: url_nok.xml,v 1.1 2005/08/03 20:48:31 jonasbn Exp $ -->
+<!-- $Id: url_nok.xml,v 1.1 2005-08-03 20:48:31 jonasbn Exp $ -->
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <CUSTOMER>
 		<CUST_NAME>$cust_name</CUSTNAME>

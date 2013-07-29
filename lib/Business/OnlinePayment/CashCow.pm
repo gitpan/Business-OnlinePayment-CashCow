@@ -1,6 +1,6 @@
 package Business::OnlinePayment::CashCow;
 
-# $Id: CashCow.pm,v 1.26 2007/06/18 10:28:21 jonasbn Exp $
+# $Id: CashCow.pm,v 1.26 2007-06-18 10:28:21 jonasbn Exp $
 
 use strict;
 use warnings;
@@ -14,7 +14,7 @@ use Data::Dumper;
 
 use constant DEBUG => 0;
 
-$VERSION = '0.09';
+$VERSION = '0.10';
 
 sub set_defaults {
     my $self = shift;

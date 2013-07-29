@@ -1,4 +1,4 @@
-# $Id: Submit.t,v 1.8 2005/10/12 17:33:48 jonasbn Exp $
+# $Id: Submit.t,v 1.8 2005-10-12 17:33:48 jonasbn Exp $
 
 use strict;
 use Test::More;

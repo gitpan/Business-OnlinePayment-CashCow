@@ -1,6 +1,6 @@
 INSTALL file for Business-OnlinePayment-CashCow
 
-$Id: INSTALL,v 1.2 2005/08/09 08:38:29 jonasbn Exp $
+$Id: INSTALL,v 1.2 2005-08-09 08:38:29 jonasbn Exp $
 
 1. tar -xvzf Business-OnlinePayment-CashCow-0.01.tar.gz 
 
